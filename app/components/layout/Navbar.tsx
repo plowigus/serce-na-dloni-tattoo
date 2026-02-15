@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRef } from "react";
 
-// Ikony Social Media (z Twojego kodu)
+// Ikony Social Media
 const IconFB = ({ className }: { className?: string }) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
 );
@@ -22,13 +22,11 @@ export default function Navbar() {
     useGSAP(() => {
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-        // 1. Navbar zjeżdża
         tl.from(navRef.current, {
             yPercent: -100,
             duration: 1,
             delay: 0.2
         })
-            // 2. Elementy wchodzą
             .to([containerRef.current, logoRef.current], {
                 y: 0,
                 opacity: 1,
@@ -38,23 +36,22 @@ export default function Navbar() {
 
     }, { scope: navRef });
 
-    // Style dla linków
-    const linkStyle = "relative text-sm uppercase tracking-widest text-primary-800 hover:text-primary-600 transition-colors font-medium group py-2 whitespace-nowrap";
-    const underlineStyle = "absolute left-0 bottom-0 w-0 h-[1px] bg-primary-400 transition-all duration-300 group-hover:w-full";
+    // UPDATE: Zmieniono hover na primary-950 (ciemniejszy)
+    const linkStyle = "relative text-sm uppercase tracking-widest text-primary-800 hover:text-primary-950 transition-colors font-medium group py-2 whitespace-nowrap";
+    const underlineStyle = "absolute left-0 bottom-0 w-0 h-[1px] bg-primary-950 transition-all duration-300 group-hover:w-full";
 
     return (
         <nav
             ref={navRef}
             className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-4"
         >
-            {/* Glassmorphism Container */}
             <div
                 ref={containerRef}
-                className="opacity-0 translate-y-[-10px] mx-auto max-w-6xl rounded-2xl bg-white/30 backdrop-blur-md border-[0.5px] border-primary-950/25 shadow-sm shadow-primary-500/5 px-8 py-4 relative grid grid-cols-2 items-center"
+                className="opacity-0 translate-y-[-10px] mx-auto max-w-7xl rounded-2xl bg-white/30 backdrop-blur-md border-[0.5px] border-primary-950/25 shadow-sm shadow-primary-500/5 px-8 py-4 relative grid grid-cols-2 items-center"
             >
 
                 {/* LEWA STRONA */}
-                <div className="flex items-center justify-end gap-12 z-10 pr-16">
+                <div className="flex items-center justify-end gap-12 z-30 pr-16">
                     <Link href="/" className={linkStyle}>
                         Home
                         <span className={underlineStyle}></span>
@@ -69,12 +66,12 @@ export default function Navbar() {
                     </Link>
                 </div>
 
-                {/* ŚRODEK (LOGO) - ABSOLUTE CENTER */}
+                {/* ŚRODEK (LOGO) */}
                 <div
                     ref={logoRef}
                     className="opacity-0 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex justify-center pointer-events-none"
                 >
-                    <Link href="/" className="relative block w-64 h-24 hover:opacity-80 transition-opacity pointer-events-auto">
+                    <Link href="/" className="relative block w-64 h-24 pointer-events-auto">
                         <Image
                             src="/logo.png"
                             alt="Serce na Dłoni Logo"
@@ -87,25 +84,32 @@ export default function Navbar() {
                 </div>
 
                 {/* PRAWA STRONA */}
-                <div className="flex items-center justify-start gap-10 z-10 pl-16 w-full">
+                <div className="flex items-center justify-start gap-10 z-30 pl-16 w-full">
                     <Link href="/moje-prace" className={linkStyle}>
                         Moje prace
                         <span className={underlineStyle}></span>
                     </Link>
+
+                    <Link href="/kalendarz" className={linkStyle}>
+                        Kalendarz
+                        <span className={underlineStyle}></span>
+                    </Link>
+
                     <Link href="/kontakt" className={linkStyle}>
                         Kontakt
                         <span className={underlineStyle}></span>
                     </Link>
 
-                    {/* Separator z klasą ml-auto - przesuwa wszystko co za nim na sam koniec */}
+                    {/* Separator */}
                     <div className="h-4 w-px bg-primary-950/20 mx-2 hidden md:block ml-auto"></div>
 
-                    <div className="flex items-center gap-4 text-primary-800">
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-600 hover:scale-110 transition-all duration-300">
+                    {/* UPDATE: Dodano pr-12 dla większego marginesu z prawej */}
+                    <div className="flex items-center gap-4 text-primary-800 pr-12">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-950 hover:scale-110 transition-all duration-300">
                             <IconIG className="w-5 h-5" />
                             <span className="sr-only">Instagram</span>
                         </a>
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-600 hover:scale-110 transition-all duration-300">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-950 hover:scale-110 transition-all duration-300">
                             <IconFB className="w-5 h-5" />
                             <span className="sr-only">Facebook</span>
                         </a>
