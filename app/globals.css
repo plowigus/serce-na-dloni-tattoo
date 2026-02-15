@@ -1,26 +1,40 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Paleta "Serce": Base #d0a1a9 mapowana jako 500 */
+  --color-primary-50: #faf6f6;
+  /* 90% tint */
+  --color-primary-100: #f6ecee;
+  /* 80% tint */
+  --color-primary-200: #e8d0d4;
+  /* 60% tint (skip 70% for scale balance) */
+  --color-primary-300: #debdc3;
+  /* 40% tint */
+  --color-primary-400: #d5aab2;
+  /* 20% tint */
+  --color-primary-500: #d0a1a9;
+  /* BASE */
+  --color-primary-600: #bb9198;
+  /* 10% shade */
+  --color-primary-700: #927176;
+  /* 30% shade */
+  --color-primary-800: #685155;
+  /* 50% shade */
+  --color-primary-900: #3e3033;
+  /* 70% shade */
+  --color-primary-950: #151011;
+  /* 90% shade */
+
+  /* Fonty i animacje (opcjonalnie, dostosuj pod projekt) */
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  /* Sugestia dla stylu kobiecego */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Utilities for GSAP / Layout */
+@layer utilities {
+  .clip-image {
+    clip-path: inset(0 0 0 0 round 12px);
+    /* Przykładowy delikatny border-radius */
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
