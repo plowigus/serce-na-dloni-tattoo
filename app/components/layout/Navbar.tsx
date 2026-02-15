@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRef } from "react";
 
-// Ikony Social Media
+// Ikony Social Media (bez zmian)
 const IconFB = ({ className }: { className?: string }) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
 );
@@ -36,7 +36,6 @@ export default function Navbar() {
 
     }, { scope: navRef });
 
-    // UPDATE: Zmieniono hover na primary-950 (ciemniejszy)
     const linkStyle = "relative text-sm uppercase tracking-widest text-primary-800 hover:text-primary-950 transition-colors font-medium group py-2 whitespace-nowrap";
     const underlineStyle = "absolute left-0 bottom-0 w-0 h-[1px] bg-primary-950 transition-all duration-300 group-hover:w-full";
 
@@ -52,15 +51,16 @@ export default function Navbar() {
 
                 {/* LEWA STRONA */}
                 <div className="flex items-center justify-end gap-12 z-30 pr-16">
-                    <Link href="/" className={linkStyle}>
+                    {/* ZMIANA: Dodano prefetch={false} do wszystkich linków */}
+                    <Link href="/" className={linkStyle} prefetch={false}>
                         Home
                         <span className={underlineStyle}></span>
                     </Link>
-                    <Link href="/o-mnie" className={linkStyle}>
+                    <Link href="/o-mnie" className={linkStyle} prefetch={false}>
                         O mnie
                         <span className={underlineStyle}></span>
                     </Link>
-                    <Link href="/rezerwacja" className={linkStyle}>
+                    <Link href="/rezerwacja" className={linkStyle} prefetch={false}>
                         Jak się umówić?
                         <span className={underlineStyle}></span>
                     </Link>
@@ -71,7 +71,7 @@ export default function Navbar() {
                     ref={logoRef}
                     className="opacity-0 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex justify-center pointer-events-none"
                 >
-                    <Link href="/" className="relative block w-64 h-24 pointer-events-auto">
+                    <Link href="/" className="relative block w-64 h-24 pointer-events-auto" prefetch={false}>
                         <Image
                             src="/logo.png"
                             alt="Serce na Dłoni Logo"
@@ -85,25 +85,23 @@ export default function Navbar() {
 
                 {/* PRAWA STRONA */}
                 <div className="flex items-center justify-start gap-10 z-30 pl-16 w-full">
-                    <Link href="/moje-prace" className={linkStyle}>
+                    <Link href="/moje-prace" className={linkStyle} prefetch={false}>
                         Moje prace
                         <span className={underlineStyle}></span>
                     </Link>
 
-                    <Link href="/kalendarz" className={linkStyle}>
+                    <Link href="/kalendarz" className={linkStyle} prefetch={false}>
                         Kalendarz
                         <span className={underlineStyle}></span>
                     </Link>
 
-                    <Link href="/kontakt" className={linkStyle}>
+                    <Link href="/kontakt" className={linkStyle} prefetch={false}>
                         Kontakt
                         <span className={underlineStyle}></span>
                     </Link>
 
-                    {/* Separator */}
                     <div className="h-4 w-px bg-primary-950/20 mx-2 hidden md:block ml-auto"></div>
 
-                    {/* UPDATE: Dodano pr-12 dla większego marginesu z prawej */}
                     <div className="flex items-center gap-4 text-primary-800 pr-12">
                         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-950 hover:scale-110 transition-all duration-300">
                             <IconIG className="w-5 h-5" />
