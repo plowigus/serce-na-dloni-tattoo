@@ -3,61 +3,55 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Image from "next/image";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 
-interface HeroProps {
-    startAnimation: boolean;
-}
-
-export default function Hero({ startAnimation }: HeroProps) {
+export default function Hero() {
     const containerRef = useRef<HTMLElement>(null);
     const imgRef = useRef<HTMLDivElement>(null);
     const textContainerRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
 
-    // Zabezpieczenie przed podwójną animacją
-    const hasAnimated = useRef(false);
-
-    const { contextSafe } = useGSAP({ scope: containerRef });
-
-    useEffect(() => {
-        if (startAnimation && !hasAnimated.current) {
-            hasAnimated.current = true;
-            playIntro();
-        }
-    }, [startAnimation]);
-
-    const playIntro = contextSafe(() => {
+    // Animacja startuje automatycznie po zamontowaniu komponentu
+    useGSAP(() => {
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
+        // Sekwencja wejścia (od razu)
         tl.to(imgRef.current, { opacity: 1, scale: 1, x: 0, duration: 1.2 })
             .to(textContainerRef.current, { opacity: 1, y: 0, duration: 1 }, "-=0.8")
             .to(contentRef.current?.children || [], { y: 0, opacity: 1, duration: 0.8, stagger: 0.1 }, "-=0.6");
-    });
+
+    }, { scope: containerRef });
 
     return (
         <section ref={containerRef} className="relative h-dvh w-full flex items-center justify-center pt-24 pb-12 overflow-hidden z-10">
             <div className="w-full max-w-6xl px-8 h-full flex flex-col justify-center">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center h-full max-h-[85vh]">
 
-                    {/* LEWA STRONA - ZDJĘCIE */}
+                    {/* ZDJĘCIE */}
                     <div className="md:col-span-5 h-full relative flex flex-col justify-center">
-                        <div ref={imgRef} className="opacity-0 translate-x-[-30px] scale-95 relative w-full max-w-[450px] aspect-[4/5] max-h-[600px] mx-auto md:mr-auto rounded-[40px] overflow-hidden shadow-2xl shadow-primary-900/5 border border-white/40">
+                        <div
+                            ref={imgRef}
+                            // Opacity-0 na start, żeby nie mignęło przed załadowaniem JS
+                            className="opacity-0 translate-x-[-30px] scale-95 relative w-full max-w-[450px] aspect-[4/5] max-h-[600px] mx-auto md:mr-auto rounded-[40px] overflow-hidden shadow-2xl shadow-primary-900/5 border border-white/40"
+                        >
                             <Image
                                 src="https://sercenadlonistudio.pl/wp-content/uploads/2025/10/pieczkopietras_warsztaty_luty24_-64-scaled.jpg"
                                 alt="Momo - Tatuażystka"
                                 fill
                                 className="object-cover"
-                                priority
+                                priority // Kluczowe dla LCP!
                                 sizes="(max-width: 768px) 100vw, 40vw"
                             />
                         </div>
                     </div>
 
-                    {/* PRAWA STRONA - TEKST */}
+                    {/* TEKST */}
                     <div className="md:col-span-7 flex flex-col justify-center items-end">
-                        <div ref={textContainerRef} className="opacity-0 translate-y-[30px] w-full max-w-[600px] bg-white/30 backdrop-blur-md rounded-3xl p-8 md:p-12 border-[0.5px] border-primary-950/25 shadow-sm shadow-primary-500/5">
+                        <div
+                            ref={textContainerRef}
+                            className="opacity-0 translate-y-[30px] w-full max-w-[600px] bg-white/30 backdrop-blur-md rounded-3xl p-8 md:p-12 border-[0.5px] border-primary-950/25 shadow-sm shadow-primary-500/5"
+                        >
                             <div ref={contentRef}>
                                 <h1 className="opacity-0 translate-y-[20px] font-serif text-4xl md:text-5xl lg:text-6xl text-primary-950 leading-[1.1] mb-8">
                                     <span className="text-[#a85f6c] font-medium">Hej jestem Momo !</span>
