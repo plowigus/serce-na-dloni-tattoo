@@ -32,7 +32,7 @@ export default function Preloader({ ready, forceShow, onComplete }: PreloaderPro
     return (
         <div
             className={`
-                fixed inset-0 z-[9999] bg-primary-50 flex items-center justify-center
+                fixed inset-0 z-9999 bg-primary-50 flex items-center justify-center
                 transition-transform duration-800 ease-in-out will-change-transform
                 ${isExiting ? "-translate-y-full" : "translate-y-0"}
             `}
