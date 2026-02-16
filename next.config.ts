@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false, // Wyłączamy dla Three.js
+  reactStrictMode: true,
 
   images: {
+
     remotePatterns: [
       {
         protocol: 'https',
@@ -11,7 +12,6 @@ const nextConfig = {
     ],
   },
 
-  // OPTYMALIZACJA: Nagłówki bezpieczeństwa (Security Headers)
   async headers() {
     return [
       {
@@ -19,16 +19,20 @@ const nextConfig = {
         headers: [
           {
             key: 'X-Frame-Options',
-            value: 'DENY', // Chroni przed clickjackingiem
+            value: 'DENY',
           },
           {
             key: 'X-Content-Type-Options',
-            value: 'nosniff', // Chroni przed błędną interpretacją typów MIME
+            value: 'nosniff',
           },
           {
             key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin', // Bezpieczeństwo odnośników
+            value: 'strict-origin-when-cross-origin',
           },
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; img-src 'self' https: data:; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:;",
+          }
         ],
       },
     ];

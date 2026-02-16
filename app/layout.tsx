@@ -3,10 +3,11 @@ import { Playfair_Display, Inter } from "next/font/google";
 import Navbar from "@/app/components/layout/Navbar";
 import "./globals.css";
 
+// Używamy fontów variable, żeby przeglądarka pobierała tylko to, co niezbędne
 const playfair = Playfair_Display({
   variable: "--font-serif",
   subsets: ["latin"],
-  display: "swap", // Zapewnia szybsze wyświetlenie tekstu (FCP)
+  display: "swap",
 });
 
 const inter = Inter({
@@ -28,8 +29,7 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <head>
-        {/* OPTYMALIZACJA: Przyspieszamy ładowanie zdjęć z zewnętrznego serwera */}
-        <link rel="preconnect" href="https://sercenadlonistudio.pl" crossOrigin="anonymous" />
+
       </head>
       <body
         className={`${playfair.variable} ${inter.variable} font-sans antialiased text-primary-950 bg-primary-50`}

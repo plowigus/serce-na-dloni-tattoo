@@ -1,6 +1,8 @@
-// BRAK "use client" - to teraz Server Component!
 import Image from "next/image";
 import Link from "next/link";
+import momoImg from "../../../public/images/momo.jpg";
+
+
 
 export default function Hero() {
     return (
@@ -10,15 +12,16 @@ export default function Hero() {
 
                     {/* LEWA STRONA - ZDJĘCIE */}
                     <div className="md:col-span-6 h-full flex flex-col justify-start">
-                        <div className="relative w-full max-w-[600px] aspect-4/5 rounded-[40px] overflow-hidden shadow-2xl shadow-primary-900/5 border border-white/40">
+                        <div className="relative w-full max-w-[600px] aspect-4/5 rounded-[40px] overflow-hidden shadow-2xl shadow-primary-900/5 border border-white/40 bg-primary-200/50">
                             <Image
                                 alt="Momo - Tatuażystka"
+                                src={momoImg}
+                                placeholder="blur"
                                 fill
                                 className="object-cover"
                                 priority
                                 sizes="(max-width: 768px) 100vw, 50vw"
-                                quality={85}
-                                src="/images/momo.jpg"
+                                quality={90}
                             />
                         </div>
                     </div>
