@@ -10,10 +10,9 @@ const IconIG = ({ className }: { className?: string }) => (
 );
 
 export default function Navbar() {
-    // ZMIANA: text-primary-900 (ciemny) zamiast 800/950
-    // Hover zmienia się na text-primary-600 (jaśniejszy czerwony) dla kontrastu
+
     const linkStyle = "relative text-sm uppercase tracking-widest text-primary-900 hover:text-primary-600 transition-colors font-medium group py-2 whitespace-nowrap";
-    // Podkreślenie w kolorze akcentu (950) lub ciemnym (900) - dałem 900 dla spójności
+
     const underlineStyle = "absolute left-0 bottom-0 w-0 h-[1px] bg-primary-600 transition-all duration-300 group-hover:w-full";
 
     return (

@@ -28,24 +28,24 @@ export default function Hero() {
 
                     {/* PRAWA STRONA - TEKST */}
                     <div className="md:col-span-6 flex flex-col justify-center items-center md:items-end">
-                        {/* Ta sama kalkulacja wysokości dla tekstu, aby zachować symetrię */}
+
                         <div className="w-full aspect-square max-h-[calc(100dvh-180px)] bg-white/30 backdrop-blur-md rounded-[40px] p-6 md:p-10 lg:p-12 border-[0.5px] border-primary-950/25 shadow-sm shadow-primary-500/5 flex flex-col justify-center">
 
-                            {/* Dodatkowy flex-1 i justify-center wewnątrz, aby tekst był zawsze na środku, nawet jak kwadrat się zmniejszy */}
+
                             <div className="flex flex-col justify-center h-full">
                                 <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl text-primary-950 leading-[1.1] mb-4 md:mb-6 lg:mb-8">
                                     <span className="text-primary-950 font-medium italic block mb-2">Serce na Dłoni</span>
                                     <span className="text-primary-900">Hej, jestem Momo</span>
                                 </h1>
 
-                                {/* Clamp dla tekstu - zmniejsza się płynnie na małych wysokościach */}
+
                                 <div className="space-y-3 md:space-y-4 lg:space-y-6 text-sm md:text-base lg:text-lg text-primary-900 font-light leading-relaxed text-justify max-w-[440px]">
                                     <p>
                                         Wierzę, że Twoja skóra to płótno dla historii, które warto opowiedzieć.
                                         W moim studio w Bytomiu tworzę ilustracyjne tatuaże, gdzie precyzyjny
                                         detal spotyka się z głęboką, osobistą wrażliwością.
                                     </p>
-                                    <p className="hidden sm:block"> {/* Ukrywamy drugi akapit na ultra-niskich ekranach telefonów w poziomie */}
+                                    <p className="hidden sm:block">
                                         Dla mnie tatuaż to proces szukania spójności – nie tylko z Twoją
                                         estetyką, ale przede wszystkim z tym, co nosisz w środku.
                                     </p>

@@ -30,9 +30,8 @@ function PhysicsHearts({ count }: { count: number }) {
                 key: i,
                 position: [
                     (Math.random() - 0.5) * viewport.width,
-                    // Startujemy pod ekranem z losowym rozrzutem
                     -viewport.height / 2 - 2 - (Math.random() * 5),
-                    Math.random() * 4 + 1 // Głębokość (Z)
+                    Math.random() * 4 + 1
                 ],
                 scale: [scale, scale, scale],
                 userData: { color: PALETTE[Math.floor(Math.random() * PALETTE.length)] }
@@ -62,11 +61,15 @@ function PhysicsHearts({ count }: { count: number }) {
             mesh.current!.setColorAt(i, tempColor.set((data.userData as any).color));
             const body = bodies.current![i];
             if (body) {
-                // FIZYKA: Nadajemy prędkość w górę
                 body.setLinvel({
-                    x: (Math.random() - 0.5) * 0.5,
-                    y: Math.random() * 1.5 + 1.0,
+                    x: (Math.random() - 0.5) * 0.2,
+                    y: Math.random() * 0.6 + 0.4,
                     z: 0
+                }, true);
+                body.setAngvel({
+                    x: (Math.random() - 0.5) * 0.3,
+                    y: (Math.random() - 0.5) * 0.3,
+                    z: (Math.random() - 0.5) * 0.4
                 }, true);
             }
         });
@@ -84,17 +87,16 @@ function PhysicsHearts({ count }: { count: number }) {
             if (!body) return;
             const pos = body.translation();
 
-            // Resetowanie pozycji jak wyleci za wysoko
             if (pos.y > topLimit) {
                 body.setTranslation({
                     x: (Math.random() - 0.5) * viewport.width,
                     y: bottomReset,
                     z: pos.z
                 }, true);
-                body.setLinvel({ x: (Math.random() - 0.5) * 0.5, y: Math.random() * 1.5 + 1.0, z: 0 }, true);
+                body.setLinvel({ x: (Math.random() - 0.5) * 0.2, y: Math.random() * 0.6 + 0.4, z: 0 }, true);
+                body.setAngvel({ x: (Math.random() - 0.5) * 0.3, y: (Math.random() - 0.5) * 0.3, z: (Math.random() - 0.5) * 0.4 }, true);
             }
 
-            // Odbijanie od boków (opcjonalne)
             if (pos.x > halfWidth) body.setTranslation({ x: -halfWidth, y: pos.y, z: pos.z }, true);
             else if (pos.x < -halfWidth) body.setTranslation({ x: halfWidth, y: pos.y, z: pos.z }, true);
         });
@@ -109,8 +111,7 @@ function PhysicsHearts({ count }: { count: number }) {
             angularDamping={0}
             canSleep={false}
         >
-            {/* ZMIANA KLUCZOWA: frustumCulled={false} */}
-            {/* To naprawia znikanie serc przy scrollowaniu */}
+            {/* TO JEST KLUCZOWA POPRAWKA: frustumCulled={false} */}
             <instancedMesh
                 ref={mesh}
                 args={[geometry, undefined, count]}

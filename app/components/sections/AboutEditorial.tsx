@@ -28,7 +28,7 @@ export default function AboutEditorial() {
         const titleAnim = gsap.from(".anim-title-element", {
             scrollTrigger: {
                 trigger: ".anim-title-wrapper",
-                start: "top 85%",
+                start: "top 70%",
                 end: "bottom top",
                 toggleActions: "play reverse play reverse",
                 // markers: true, // Do debugowania (usunąć na produkcji)
@@ -44,7 +44,7 @@ export default function AboutEditorial() {
         const textAnim = gsap.from(".anim-text-child", {
             scrollTrigger: {
                 trigger: textRef.current,
-                start: "top 80%",
+                start: "top 70%",
                 toggleActions: "play reverse play reverse",
             },
             y: 40,
@@ -61,16 +61,13 @@ export default function AboutEditorial() {
                 start: "top bottom",
                 end: "bottom top",
                 scrub: 1.5,
-                // invalidateOnRefresh pomaga przy zmianie rozmiaru okna
                 invalidateOnRefresh: true,
             },
             xPercent: -40,
             ease: "none",
         });
 
-        // Opcjonalnie: Cleanup wewnątrz useGSAP nie jest wymagany dla samych tweenów,
-        // ale jeśli tworzysz event listenery ręcznie, tu byś je czyścił.
-        // @gsap/react robi revert() automatycznie.
+
 
     }, { scope: container });
 
@@ -140,13 +137,10 @@ export default function AboutEditorial() {
                                 fill
                                 className="object-cover"
                                 sizes="(max-width: 768px) 100vw, 33vw"
-                                placeholder="blur" // Dodano dla UX
+                                placeholder="blur"
                             />
                         </div>
-                        {/* Ozdobna ramka */}
-                        <div className="absolute top-6 -right-6 w-full h-full border border-primary-900/20 rounded-[20px] z-0 pointer-events-none" />
                     </div>
-
                 </div>
             </div>
         </section>

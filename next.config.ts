@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 1. WYŁĄCZAMY MAPY ŹRÓDEŁ - to one ważyły 2MB+
   productionBrowserSourceMaps: false,
-
-  // 2. Transpilacja dla Three.js (zostawiamy, bo potrzebne)
+  reactStrictMode: false,
   transpilePackages: ['three', '@react-three/fiber', '@react-three/rapier'],
 
   images: {
