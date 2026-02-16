@@ -10,11 +10,13 @@ const IconIG = ({ className }: { className?: string }) => (
 );
 
 export default function Navbar() {
-    const linkStyle = "relative text-sm uppercase tracking-widest text-primary-800 hover:text-primary-950 transition-colors font-medium group py-2 whitespace-nowrap";
-    const underlineStyle = "absolute left-0 bottom-0 w-0 h-[1px] bg-primary-950 transition-all duration-300 group-hover:w-full";
+    // ZMIANA: text-primary-900 (ciemny) zamiast 800/950
+    // Hover zmienia się na text-primary-600 (jaśniejszy czerwony) dla kontrastu
+    const linkStyle = "relative text-sm uppercase tracking-widest text-primary-900 hover:text-primary-600 transition-colors font-medium group py-2 whitespace-nowrap";
+    // Podkreślenie w kolorze akcentu (950) lub ciemnym (900) - dałem 900 dla spójności
+    const underlineStyle = "absolute left-0 bottom-0 w-0 h-[1px] bg-primary-600 transition-all duration-300 group-hover:w-full";
 
     return (
-
         <nav className="absolute top-0 left-0 right-0 z-50 px-6 md:px-12 py-6">
             <div className="mx-auto max-w-7xl rounded-2xl bg-white/30 backdrop-blur-md border-[0.5px] border-primary-950/25 shadow-sm shadow-primary-500/5 px-8 py-4 relative grid grid-cols-2 items-center">
 
@@ -26,7 +28,6 @@ export default function Navbar() {
                 </div>
 
                 {/* ŚRODEK (LOGO) */}
-                {/* Zachowano sztywne wymiary kontenera z poprzedniej poprawki */}
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex justify-center w-32 h-48">
                     <Link href="/" className="block w-full h-full" prefetch={false} aria-label="Strona główna">
                         <Image
@@ -48,12 +49,12 @@ export default function Navbar() {
 
                     <div className="h-4 w-px bg-primary-950/20 mx-2 hidden md:block ml-auto"></div>
 
-                    <div className="flex items-center gap-4 text-primary-800 pr-12">
-                        <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-950 hover:scale-110 transition-all duration-300" aria-label="Instagram">
+                    <div className="flex items-center gap-4 text-primary-900 pr-12">
+                        <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-600 hover:scale-110 transition-all duration-300" aria-label="Instagram">
                             <IconIG className="w-5 h-5" />
                             <span className="sr-only">Instagram</span>
                         </Link>
-                        <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-950 hover:scale-110 transition-all duration-300" aria-label="Facebook">
+                        <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-600 hover:scale-110 transition-all duration-300" aria-label="Facebook">
                             <IconFB className="w-5 h-5" />
                             <span className="sr-only">Facebook</span>
                         </Link>

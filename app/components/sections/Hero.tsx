@@ -38,8 +38,8 @@ export default function Hero() {
                             {/* Dodatkowy flex-1 i justify-center wewnątrz, aby tekst był zawsze na środku, nawet jak kwadrat się zmniejszy */}
                             <div className="flex flex-col justify-center h-full">
                                 <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl text-primary-950 leading-[1.1] mb-4 md:mb-6 lg:mb-8">
-                                    <span className="text-[#a85f6c] font-medium italic block mb-2">Serce na Dłoni</span>
-                                    <span>Hej, jestem Momo</span>
+                                    <span className="text-primary-950 font-medium italic block mb-2">Serce na Dłoni</span>
+                                    <span className="text-primary-900">Hej, jestem Momo</span>
                                 </h1>
 
                                 {/* Clamp dla tekstu - zmniejsza się płynnie na małych wysokościach */}
@@ -58,7 +58,7 @@ export default function Hero() {
                                 <div className="mt-6 md:mt-8 lg:mt-10">
                                     <Link
                                         href="/moje-prace"
-                                        className="relative inline-flex items-center justify-center px-8 md:px-10 py-3 md:py-4 bg-[#a85f6c] text-white rounded-2xl overflow-hidden transition-colors duration-300 ease-out hover:bg-[#8e4d59]"
+                                        className="relative inline-flex items-center justify-center px-8 md:px-10 py-3 md:py-4 bg-primary-950 text-white rounded-2xl overflow-hidden transition-colors duration-300 ease-out hover:bg-[#8e4d59]"
                                         prefetch={false}
                                         aria-label="Zobacz moje prace - przejdź do portfolio"
                                     >

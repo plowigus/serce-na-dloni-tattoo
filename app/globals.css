@@ -6,7 +6,8 @@
   --font-serif: var(--font-serif), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 
   /* --- KOLORY PRIMARY --- */
-  /* Definiujemy paletę kolorów bezpośrednio w CSS */
+  /* primary-900 to Twój CIEMNY kolor tekstu (#801b29) */
+  /* primary-950 to Twój kolor AKCENTU (#a85f6c - Serce na Dłoni) */
   --color-primary-50: #fdf2f3;
   --color-primary-100: #fce7e9;
   --color-primary-200: #fbd0d5;
@@ -16,15 +17,14 @@
   --color-primary-600: #d42d45;
   --color-primary-700: #b21e32;
   --color-primary-800: #951c2d;
-  --color-primary-900: #801b29;
+  --color-primary-900: #380a11;
   --color-primary-950: #a85f6c;
-  /* Twój customowy kolor */
 }
 
-/* Reszta Twoich styli globalnych (jeśli masz jakieś specyficzne) */
 @layer base {
   body {
-    /* Wymuszamy domyślny kolor tła i tekstu */
-    @apply bg-primary-50 text-primary-950;
+    /* ZMIANA: text-primary-900 zamiast 950. 
+       Dzięki temu domyślny tekst jest ciemny i czytelny. */
+    @apply bg-primary-50 text-primary-900;
   }
 }
