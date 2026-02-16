@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import momoImg from "../../../public/images/momo.jpg";
+import SceneWrapper from "../ui/SceneWrapper";
 
 export default function Hero() {
     return (
         <section className="relative h-dvh w-full flex items-center justify-center pt-32 pb-8 overflow-hidden z-10">
-
+            <SceneWrapper />
             <div className="w-full max-w-7xl h-full flex flex-col justify-center">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-4 h-full items-center">
 
