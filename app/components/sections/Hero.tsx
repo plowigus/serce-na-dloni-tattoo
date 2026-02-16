@@ -52,13 +52,13 @@ export default function Hero({ startAnimation }: HeroProps) {
                             className="opacity-0 translate-x-[-30px] scale-95 relative w-full max-w-[600px] aspect-4/5 rounded-[40px] overflow-hidden shadow-2xl shadow-primary-900/5 border border-white/40"
                         >
                             <Image
-                                src="https://sercenadlonistudio.pl/wp-content/uploads/2025/10/pieczkopietras_warsztaty_luty24_-64-scaled.jpg"
                                 alt="Momo - Tatuażystka"
                                 fill
                                 className="object-cover"
                                 priority
                                 sizes="(max-width: 768px) 100vw, 50vw"
                                 quality={85}
+                                src="/images/momo.jpg"
                             />
                         </div>
                     </div>

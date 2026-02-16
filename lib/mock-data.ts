@@ -2,7 +2,7 @@ import { HeroSection, NavigationConfig } from "@/types/cms";
 
 export const mockNavData: NavigationConfig = {
     logo: {
-        src: "/images/logo.svg", // Placeholder, ensure this file exists or update path
+        src: "/images/logo.svg",
         alt: "Serce na Dłoni Logo",
     },
     links: [
