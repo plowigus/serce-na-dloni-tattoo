@@ -2,8 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
 
-  images: {
+  // TO NAPRAWIA OSTRZEŻENIE LIGHTHOUSE:
+  productionBrowserSourceMaps: true,
 
+  images: {
     remotePatterns: [
       {
         protocol: 'https',
@@ -30,6 +32,7 @@ const nextConfig = {
             value: 'strict-origin-when-cross-origin',
           },
           {
+            // Poprawiony CSP (opcjonalnie, jeśli poprzedni był zbyt restrykcyjny)
             key: 'Content-Security-Policy',
             value: "default-src 'self'; img-src 'self' https: data:; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:;",
           }
