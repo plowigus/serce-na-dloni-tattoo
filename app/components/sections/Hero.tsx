@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+
+// ZMIANA: Statyczny import zdjęcia (usuwa mignięcie przy ładowaniu)
+// Upewnij się, że plik jest w public/images/momo.jpg
 import momoImg from "../../../public/images/momo.jpg";
-
-
 
 export default function Hero() {
     return (
@@ -12,11 +13,11 @@ export default function Hero() {
 
                     {/* LEWA STRONA - ZDJĘCIE */}
                     <div className="md:col-span-6 h-full flex flex-col justify-start">
-                        <div className="relative w-full max-w-[600px] aspect-4/5 rounded-[40px] overflow-hidden shadow-2xl shadow-primary-900/5 border border-white/40 bg-primary-200/50">
+                        <div className="relative w-full max-w-[600px] aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl shadow-primary-900/5 border border-white/40 bg-primary-200/50">
                             <Image
                                 alt="Momo - Tatuażystka"
-                                src={momoImg}
-                                placeholder="blur"
+                                src={momoImg} // Użycie importu statycznego
+                                placeholder="blur" // Rozmyte tło zamiast pustego miejsca
                                 fill
                                 className="object-cover"
                                 priority
@@ -28,7 +29,7 @@ export default function Hero() {
 
                     {/* PRAWA STRONA - TEKST */}
                     <div className="md:col-span-6 h-full flex flex-col justify-start items-center md:items-end">
-                        <div className="w-full max-w-[600px] aspect-4/5 bg-white/30 backdrop-blur-md rounded-[40px] p-8 md:p-12 border-[0.5px] border-primary-950/25 shadow-sm shadow-primary-500/5 flex flex-col justify-start">
+                        <div className="w-full max-w-[600px] aspect-[4/5] bg-white/30 backdrop-blur-md rounded-[40px] p-8 md:p-12 border-[0.5px] border-primary-950/25 shadow-sm shadow-primary-500/5 flex flex-col justify-start">
 
                             <div>
                                 <h1 className="font-serif text-4xl md:text-5xl lg:text-5xl text-primary-950 leading-[1.1] mb-8">
@@ -52,8 +53,12 @@ export default function Hero() {
                                 <div className="mt-10">
                                     <Link
                                         href="/moje-prace"
-                                        className="relative inline-flex items-center justify-center px-10 py-4 bg-[#e7a0a1] text-white rounded-2xl overflow-hidden transition-colors duration-300 ease-out hover:bg-[#a85f6c]"
+                                        // ZMIANA KOLORÓW DLA KONTRASTU (Accessibility Fix)
+                                        // Stary bg: #e7a0a1 (za jasny) -> Nowy bg: #a85f6c (ciemny róż z nagłówka)
+                                        // Hover: jeszcze ciemniejszy odcień #8e4d59 dla efektu kliknięcia
+                                        className="relative inline-flex items-center justify-center px-10 py-4 bg-[#a85f6c] text-white rounded-2xl overflow-hidden transition-colors duration-300 ease-out hover:bg-[#8e4d59]"
                                         prefetch={false}
+                                        aria-label="Zobacz moje prace - przejdź do portfolio"
                                     >
                                         <span className="relative z-10 uppercase tracking-widest text-sm font-medium">
                                             Zobacz moje prace
