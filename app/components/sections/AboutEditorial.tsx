@@ -133,7 +133,7 @@ export default function AboutEditorial() {
 
                     {/* KOLUMNA 3: ZDJĘCIE (STATYCZNE) */}
                     <div className="lg:col-span-4 relative mt-16 lg:mt-0 overflow-hidden rounded-[20px]">
-                        <div className="relative w-full aspect-[3/4] shadow-2xl shadow-primary-900/10 z-10 grayscale-[20%] hover:grayscale-0 transition-all duration-700">
+                        <div className="relative w-full aspect-3/4 shadow-2xl shadow-primary-900/10 z-10 grayscale-20 hover:grayscale-0 transition-all duration-700">
                             <Image
                                 src={momoImg}
                                 alt="Momo przy pracy"
