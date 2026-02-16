@@ -4,7 +4,8 @@ import { Playfair_Display } from "next/font/google";
 import Navbar from "@/app/components/layout/Navbar";
 import "./globals.css";
 
-// Konfiguracja Playfair (dla nagłówków)
+// Konfiguracja Playfair (Tylko dla nagłówków)
+// Subset 'latin' drastycznie zmniejsza wagę pliku
 const playfair = Playfair_Display({
   variable: "--font-serif",
   subsets: ["latin"],
@@ -23,7 +24,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
-
+      {/* ZMIANA W BODY:
+          1. Usunięto ${inter.variable}.
+          2. Zostawiamy font-sans (Tailwind domyślnie użyje systemowych fontów).
+          Efekt: Nagłówki ozdobne (Playfair), reszta tekstu ultra-szybka (Systemowa).
+      */}
       <body
         className={`${playfair.variable} font-sans antialiased text-primary-950 bg-primary-50`}
       >

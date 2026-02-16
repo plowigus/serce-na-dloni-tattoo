@@ -1,40 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-  /* Paleta "Serce": Base #d0a1a9 mapowana jako 500 */
-  --color-primary-50: #faf6f6;
-  /* 90% tint */
-  --color-primary-100: #f6ecee;
-  /* 80% tint */
-  --color-primary-200: #e8d0d4;
-  /* 60% tint (skip 70% for scale balance) */
-  --color-primary-300: #debdc3;
-  /* 40% tint */
-  --color-primary-400: #d5aab2;
-  /* 20% tint */
-  --color-primary-500: #d0a1a9;
-  /* BASE */
-  --color-primary-600: #bb9198;
-  /* 10% shade */
-  --color-primary-700: #927176;
-  /* 30% shade */
-  --color-primary-800: #685155;
-  /* 50% shade */
-  --color-primary-900: #3e3033;
-  /* 70% shade */
-  --color-primary-950: #151011;
-  /* 90% shade */
 
-  /* Fonty i animacje (opcjonalnie, dostosuj pod projekt) */
-  --font-sans: "Inter", sans-serif;
-  --font-serif: "Playfair Display", serif;
-  /* Sugestia dla stylu kobiecego */
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif: var(--font-serif), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+
+  /* --- KOLORY PRIMARY --- */
+  /* Definiujemy paletę kolorów bezpośrednio w CSS */
+  --color-primary-50: #fdf2f3;
+  --color-primary-100: #fce7e9;
+  --color-primary-200: #fbd0d5;
+  --color-primary-300: #f8aab4;
+  --color-primary-400: #f27a8a;
+  --color-primary-500: #e84f64;
+  --color-primary-600: #d42d45;
+  --color-primary-700: #b21e32;
+  --color-primary-800: #951c2d;
+  --color-primary-900: #801b29;
+  --color-primary-950: #a85f6c;
+  /* Twój customowy kolor */
 }
 
-/* Utilities for GSAP / Layout */
-@layer utilities {
-  .clip-image {
-    clip-path: inset(0 0 0 0 round 12px);
-    /* Przykładowy delikatny border-radius */
+/* Reszta Twoich styli globalnych (jeśli masz jakieś specyficzne) */
+@layer base {
+  body {
+    /* Wymuszamy domyślny kolor tła i tekstu */
+    @apply bg-primary-50 text-primary-950;
   }
 }
