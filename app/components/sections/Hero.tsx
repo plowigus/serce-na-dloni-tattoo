@@ -12,11 +12,6 @@ export default function Hero() {
 
                     {/* LEWA STRONA - ZDJĘCIE */}
                     <div className="md:col-span-6 flex flex-col justify-center items-center md:items-start">
-                        {/* ZMIANA KLUCZOWA:
-                            max-h-[calc(100dvh-180px)] 
-                            To oznacza: Maksymalna wysokość to CAŁY EKRAN minus MIEJSCE NA NAVBAR i MARGINES DOLNY.
-                            Dzięki temu element nigdy nie wyjdzie poza widoczny obszar.
-                        */}
                         <div className="relative w-full aspect-square max-h-[calc(100dvh-180px)] rounded-[40px] overflow-hidden shadow-2xl shadow-primary-900/5 border border-white/40 bg-primary-200/50">
                             <Image
                                 alt="Momo - Tatuażystka"
