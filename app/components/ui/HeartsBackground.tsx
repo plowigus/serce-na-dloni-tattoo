@@ -7,7 +7,6 @@ import { Physics, InstancedRigidBodies, RapierRigidBody, InstancedRigidBodyProps
 
 const PALETTE = ["#d0a1a9", "#d5aab2", "#debdc3", "#e8d0d4", "#f6ecee", "#fadadd"];
 
-// Geometria serca (zoptymalizowana)
 const heartShape = new THREE.Shape();
 const x = 0, y = 0;
 heartShape.moveTo(x + 0.5, y + 0.5);
@@ -31,8 +30,9 @@ function PhysicsHearts({ count }: { count: number }) {
                 key: i,
                 position: [
                     (Math.random() - 0.5) * viewport.width,
-                    (Math.random() - 0.5) * viewport.height,
-                    Math.random() * 4 + 1 // Bliżej kamery (oś Z)
+                    // START: Pod ekranem (viewport.height / 2 + bufor)
+                    -viewport.height / 2 - 2 - (Math.random() * 5),
+                    Math.random() * 4 + 1
                 ],
                 scale: [scale, scale, scale],
                 userData: { color: PALETTE[Math.floor(Math.random() * PALETTE.length)] }
@@ -62,10 +62,10 @@ function PhysicsHearts({ count }: { count: number }) {
             mesh.current!.setColorAt(i, tempColor.set((data.userData as any).color));
             const body = bodies.current![i];
             if (body) {
-                // Stała prędkość na start
+                // FIZYKA: Nadajemy prędkość w górę (Y > 0)
                 body.setLinvel({
-                    x: (Math.random() - 0.5) * 1.5,
-                    y: (Math.random() - 0.5) * 1.5,
+                    x: (Math.random() - 0.5) * 0.5, // Lekkie odchylenie na boki
+                    y: Math.random() * 1.5 + 1.0,   // Ruch w górę
                     z: 0
                 }, true);
             }
@@ -75,19 +75,31 @@ function PhysicsHearts({ count }: { count: number }) {
 
     useFrame(() => {
         if (!bodies.current) return;
-        const margin = 2;
-        const halfWidth = viewport.width / 2 + margin;
-        const halfHeight = viewport.height / 2 + margin;
+
+        // Granice resetowania
+        const topLimit = viewport.height / 2 + 2;
+        const bottomReset = -viewport.height / 2 - 2;
+        const halfWidth = viewport.width / 2 + 1;
 
         bodies.current.forEach((body) => {
             if (!body) return;
             const pos = body.translation();
+            const vel = body.linvel();
 
-            // Warp wokół krawędzi (pętla ruchu)
+            // Jeśli serce wyleci górą -> zresetuj na dół
+            if (pos.y > topLimit) {
+                body.setTranslation({
+                    x: (Math.random() - 0.5) * viewport.width,
+                    y: bottomReset,
+                    z: pos.z
+                }, true);
+                // Reset prędkości żeby nie kumulowała się dziwnie
+                body.setLinvel({ x: (Math.random() - 0.5) * 0.5, y: Math.random() * 1.5 + 1.0, z: 0 }, true);
+            }
+
+            // Odbijanie od boków (opcjonalne, można też resetować)
             if (pos.x > halfWidth) body.setTranslation({ x: -halfWidth, y: pos.y, z: pos.z }, true);
             else if (pos.x < -halfWidth) body.setTranslation({ x: halfWidth, y: pos.y, z: pos.z }, true);
-            if (pos.y > halfHeight) body.setTranslation({ x: pos.x, y: -halfHeight, z: pos.z }, true);
-            else if (pos.y < -halfHeight) body.setTranslation({ x: pos.x, y: halfHeight, z: pos.z }, true);
         });
     });
 
@@ -96,9 +108,9 @@ function PhysicsHearts({ count }: { count: number }) {
             ref={bodies}
             instances={instances}
             colliders="cuboid"
-            linearDamping={0}    // Brak wyhamowywania ruchu postępowego
-            angularDamping={0}   // Brak wyhamowywania rotacji
-            canSleep={false}     // Serduszka nigdy nie "zasypiają" (nie stają w miejscu)
+            linearDamping={0}
+            angularDamping={0}
+            canSleep={false}
         >
             <instancedMesh ref={mesh} args={[geometry, undefined, count]}>
                 <meshStandardMaterial roughness={1} metalness={0} toneMapped={false} />
@@ -107,11 +119,10 @@ function PhysicsHearts({ count }: { count: number }) {
     );
 }
 
-export default function HeartsBackground({ onReady }: { onReady: () => void }) {
+export default function HeartsBackground() {
     const [count, setCount] = useState(15);
 
     useEffect(() => {
-        // Redukcja serc na mobile (poniżej 768px)
         if (window.innerWidth < 768) {
             setCount(7);
         }
@@ -128,9 +139,6 @@ export default function HeartsBackground({ onReady }: { onReady: () => void }) {
                     powerPreference: "high-performance",
                     stencil: false,
                     depth: false
-                }}
-                onCreated={() => {
-                    requestAnimationFrame(() => onReady());
                 }}
             >
                 <ambientLight intensity={2.5} />
