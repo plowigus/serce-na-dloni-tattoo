@@ -14,7 +14,8 @@ export default function Navbar() {
     const underlineStyle = "absolute left-0 bottom-0 w-0 h-[1px] bg-primary-950 transition-all duration-300 group-hover:w-full";
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-4">
+
+        <nav className="absolute top-0 left-0 right-0 z-50 px-6 md:px-12 py-6">
             <div className="mx-auto max-w-7xl rounded-2xl bg-white/30 backdrop-blur-md border-[0.5px] border-primary-950/25 shadow-sm shadow-primary-500/5 px-8 py-4 relative grid grid-cols-2 items-center">
 
                 {/* LEWA STRONA */}
@@ -25,14 +26,15 @@ export default function Navbar() {
                 </div>
 
                 {/* ŚRODEK (LOGO) */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex justify-center">
-                    <Link href="/" className="block" prefetch={false} aria-label="Strona główna">
+                {/* Zachowano sztywne wymiary kontenera z poprzedniej poprawki */}
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex justify-center w-32 h-48">
+                    <Link href="/" className="block w-full h-full" prefetch={false} aria-label="Strona główna">
                         <Image
                             src="/logo.png"
                             alt="Serce na Dłoni Logo"
                             width={256}
                             height={96}
-                            className="w-32 h-48 object-contain"
+                            className="h-full w-full object-contain"
                             priority
                         />
                     </Link>
@@ -47,7 +49,6 @@ export default function Navbar() {
                     <div className="h-4 w-px bg-primary-950/20 mx-2 hidden md:block ml-auto"></div>
 
                     <div className="flex items-center gap-4 text-primary-800 pr-12">
-                        {/* ZMIANA: Użycie Link zamiast <a> + aria-label dla dostępności */}
                         <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-950 hover:scale-110 transition-all duration-300" aria-label="Instagram">
                             <IconIG className="w-5 h-5" />
                             <span className="sr-only">Instagram</span>
