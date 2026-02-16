@@ -21,7 +21,7 @@ export default function SceneWrapper() {
             } else {
                 setMountCanvas(true);
             }
-        }, 1000);
+        }, 1300);
 
         return () => clearTimeout(timer);
     }, []);
