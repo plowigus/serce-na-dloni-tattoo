@@ -3,21 +3,17 @@ import { Playfair_Display, Inter } from "next/font/google";
 import Navbar from "@/app/components/layout/Navbar";
 import "./globals.css";
 
-// OPTYMALIZACJA: Ładujemy tylko wagi 400 i 500 oraz style normal/italic
+
 const playfair = Playfair_Display({
   variable: "--font-serif",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500"],
-  style: ["normal", "italic"],
 });
 
-// OPTYMALIZACJA: Ładujemy tylko 300 (teksty), 400 (baza), 500 (przyciski/nav)
 const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500"],
 });
 
 export const metadata: Metadata = {
