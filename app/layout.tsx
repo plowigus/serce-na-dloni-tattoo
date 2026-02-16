@@ -1,31 +1,20 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+// ZMIANA: Wracamy do zoptymalizowanego modułu Google
+import { Playfair_Display, Inter } from "next/font/google";
 import Navbar from "@/app/components/layout/Navbar";
 import "./globals.css";
 
-
-const playfair = localFont({
-  src: './fonts/PlayfairDisplay-VariableFont_wght.ttf',
-  variable: '--font-serif',
-  display: 'swap',
-  weight: '400 900',
+// Konfiguracja: Variable font + tylko Latin
+const playfair = Playfair_Display({
+  variable: "--font-serif",
+  subsets: ["latin"], // KLUCZ DO MAŁEGO ROZMIARU
+  display: "swap",
 });
 
-const inter = localFont({
-  src: [
-    {
-      path: './fonts/Inter-VariableFont_opsz,wght.ttf',
-      weight: '100 900',
-      style: 'normal',
-    },
-    {
-      path: './fonts/Inter-Italic-VariableFont_opsz,wght.ttf',
-      weight: '100 900',
-      style: 'italic',
-    },
-  ],
-  variable: '--font-sans',
-  display: 'swap',
+const inter = Inter({
+  variable: "--font-sans",
+  subsets: ["latin"], // KLUCZ DO MAŁEGO ROZMIARU
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -41,7 +30,6 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <body
-        // Łączymy zmienne fontów i klasy bazowe
         className={`${playfair.variable} ${inter.variable} font-sans antialiased text-primary-950 bg-primary-50`}
       >
         <Navbar />

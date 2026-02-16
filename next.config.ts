@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // 1. WYŁĄCZAMY MAPY ŹRÓDEŁ - to one ważyły 2MB+
+  productionBrowserSourceMaps: false,
+
+  // 2. Transpilacja dla Three.js (zostawiamy, bo potrzebne)
   transpilePackages: ['three', '@react-three/fiber', '@react-three/rapier'],
-
-
-  productionBrowserSourceMaps: true,
 
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -25,6 +26,7 @@ const nextConfig = {
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           {
             key: 'Content-Security-Policy',
+            // Zostawiamy bezpieczne nagłówki
             value: "default-src 'self'; img-src 'self' https: data:; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:;",
           }
         ],
