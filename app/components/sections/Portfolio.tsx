@@ -102,7 +102,7 @@ export default function Portfolio() {
 
                     {/* PRAWA: FOTO */}
                     <div className="order-1 lg:order-2 flex justify-center lg:justify-end anim-portfolio-intro">
-                        <div className="relative w-full max-w-md aspect-[3/4] overflow-hidden bg-primary-200 border border-primary-900/10 rounded-[20px] shadow-2xl">
+                        <div className="relative w-full max-w-md aspect-3/4 overflow-hidden bg-primary-200 border border-primary-900/10 rounded-[20px] shadow-2xl">
                             <Image
                                 src={fotoImg}
                                 alt="Momo Młynarska"
@@ -118,9 +118,9 @@ export default function Portfolio() {
             </div>
 
             {/* CZĘŚĆ 2: GALERIA POZIOMA */}
-            <div ref={galleryWrapperRef} className="h-[100dvh] w-full overflow-hidden flex flex-col justify-center relative bg-primary-50">
+            <div ref={galleryWrapperRef} className="h-dvh w-full overflow-hidden flex flex-col justify-center relative bg-primary-50">
 
-                <div className="flex-grow flex items-center w-full">
+                <div className="grow flex items-center w-full">
                     <div ref={stripContainerRef} className="w-full max-w-[1400px] mx-auto px-6 md:px-12 h-[70vh] md:h-[80vh] flex items-center overflow-visible">
 
                         <div ref={stripRef} className="flex gap-4 md:gap-8 w-max h-full items-center">
@@ -128,7 +128,7 @@ export default function Portfolio() {
                             {PORTFOLIO_ITEMS.map((item, index) => (
                                 <div
                                     key={index}
-                                    className="relative h-full aspect-[2/3] flex-shrink-0 bg-primary-200 overflow-hidden group border border-primary-900/10"
+                                    className="relative h-full aspect-2/3 shrink-0 bg-primary-200 overflow-hidden group border border-primary-900/10"
                                 >
                                     <Image
                                         src={item.src}

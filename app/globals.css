@@ -19,6 +19,8 @@
   --color-primary-800: #951c2d;
   --color-primary-900: #380a11;
   --color-primary-950: #a85f6c;
+
+  --color-secondary-900: #0c0103;
 }
 
 @layer base {

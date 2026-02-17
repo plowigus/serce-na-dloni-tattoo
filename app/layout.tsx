@@ -3,7 +3,7 @@ import { Playfair_Display } from "next/font/google";
 import Navbar from "@/app/components/layout/Navbar";
 import "./globals.css";
 import SmoothScrolling from "./components/ui/SmoothScrolling";
-
+import Footer from "@/app/components/layout/Footer"
 
 const playfair = Playfair_Display({
   variable: "--font-serif",
@@ -29,6 +29,7 @@ export default function RootLayout({
         <SmoothScrolling />
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
