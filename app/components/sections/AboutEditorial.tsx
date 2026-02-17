@@ -18,20 +18,18 @@ export default function AboutEditorial() {
     const textRef = useRef<HTMLDivElement>(null);
     const bgTextRef = useRef<HTMLSpanElement>(null);
 
-    // useGSAP z @gsap/react automatycznie obsługuje cleanup (ctx.revert()) przy unmount
-    // Dodajemy { scope: container } aby selektory działały tylko wewnątrz tego komponentu
+
     useGSAP(() => {
-        // Zabezpieczenie: jeśli referencje nie istnieją, nie uruchamiaj animacji
+
         if (!textRef.current || !bgTextRef.current) return;
 
-        // 1. ANIMACJA NAGŁÓWKA (Sticky Title)
         const titleAnim = gsap.from(".anim-title-element", {
             scrollTrigger: {
                 trigger: ".anim-title-wrapper",
                 start: "top 70%",
                 end: "bottom top",
                 toggleActions: "play reverse play reverse",
-                // markers: true, // Do debugowania (usunąć na produkcji)
+
             },
             y: 100,
             opacity: 0,

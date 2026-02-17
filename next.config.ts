@@ -10,6 +10,12 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'sercenadlonistudio.pl',
+      }, {
+        protocol: 'https',
+        hostname: 'unsplash.com',
+      }, {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
       },
     ],
   },
