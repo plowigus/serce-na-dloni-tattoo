@@ -1,10 +1,10 @@
 import dynamic from "next/dynamic";
 import Hero from "./components/sections/Hero";
 
-
 const AboutEditorial = dynamic(() => import("./components/sections/AboutEditorial"), { ssr: true });
 const BookingSteps = dynamic(() => import("./components/sections/BookingSteps"), { ssr: true });
 const Portfolio = dynamic(() => import("./components/sections/Portfolio"), { ssr: true });
+const BookingCalendar = dynamic(() => import("./components/sections/BookingCalendar"), { ssr: true });
 
 export default function Home() {
   return (
@@ -14,6 +14,7 @@ export default function Home() {
       <AboutEditorial />
       <BookingSteps />
       <Portfolio />
+      <BookingCalendar />
     </main>
   );
 }

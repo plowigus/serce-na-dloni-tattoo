@@ -31,7 +31,7 @@ export default function Footer() {
         <footer
             ref={container}
             // ZMIANA: bg-secondary-900 (Twój nowy kolor #0c0103)
-            className="relative bg-secondary-900 text-primary-100 h-[100dvh] w-full overflow-hidden"
+            className="relative bg-secondary-900 text-primary-100 h-dvh w-full overflow-hidden"
         >
             <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 h-full flex flex-col justify-between py-8 md:py-10 relative z-10">
 
@@ -46,7 +46,7 @@ export default function Footer() {
                 </div>
 
                 {/* 2. ŚRODEK: GŁÓWNA TREŚĆ */}
-                <div className="flex-grow flex items-center footer-anim">
+                <div className="grow flex items-center footer-anim">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 w-full items-center">
 
                         {/* KOLUMNA LEWA - O STUDIU I PODEJŚCIU */}
@@ -62,7 +62,7 @@ export default function Footer() {
 
                             {/* FILOZOFIA KONTAKTU */}
                             <div>
-                                <h3 className="text-xs uppercase tracking-widest text-primary-400 mb-3">Dlaczego mail?</h3>
+                                <h3 className="text-xs uppercase tracking-widest text-primary-400 mb-3">Dlaczego wiadomość?</h3>
                                 <p className="text-base md:text-lg font-light leading-relaxed text-primary-100/90">
                                     Stawiam na kontakt pisemny – dzięki temu mogę dokładnie zapisać wszystkie szczegóły Twojej wizyty i nic mi nie umknie.
                                 </p>
